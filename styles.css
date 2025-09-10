@@ -595,3 +595,12 @@ section {
 section {
     scroll-margin-top: 80px;
 }
+/* Dark Mode Toggle */
+body {
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode {
+    background-color: #000;
+    color: white;
+}
