@@ -305,6 +305,8 @@ const styleSheet = document.createElement('style');
 styleSheet.textContent = loadingStyles;
 document.head.appendChild(styleSheet);
 
+
+
 // Console message for developers
 console.log(`
 🚀 Portfolio Website Loaded Successfully!
