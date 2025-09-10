@@ -27,10 +27,10 @@ class PortfolioGenerator:
         config = {
             "personal_info": {
                 "name": "Muntasir Khan",
-                "title": "Full Stack Developer & Problem Solver",
-                "description": "I create beautiful, functional, and user-friendly web applications",
+                "title": "Network Engineer",
+                "description": "I create logical networks and ensure seamless connectivity.",
                 "email": "muntasirmkhan@hotmail.com",
-                "phone": "+1 (555) 123-4567",
+                "phone": "+1 (647) 916-9223",
                 "location": "Toronto, Canada",
                 "social_links": {
                     "github": "https://github.com/muntasiir",
@@ -40,8 +40,7 @@ class PortfolioGenerator:
             },
             "about": {
                 "description": [
-                    "I'm a passionate developer with experience in creating web applications using modern technologies. I love solving complex problems and turning ideas into reality through code.",
-                    "When I'm not coding, you can find me exploring new technologies, contributing to open source projects, or enjoying outdoor activities."
+                    "I'm a passionate network engineer with a knack for designing efficient and scalable networks.",
                 ],
                 "stats": {
                     "projects": "50+",
