@@ -26,7 +26,7 @@ class PortfolioGenerator:
         """Create a default portfolio configuration."""
         config = {
             "personal_info": {
-                "name": "Your Name",
+                "name": "Muntasir Khan",
                 "title": "Full Stack Developer & Problem Solver",
                 "description": "I create beautiful, functional, and user-friendly web applications",
                 "email": "muntasirmkhan@hotmail.com",
