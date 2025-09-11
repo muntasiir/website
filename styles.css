@@ -96,45 +96,49 @@ body::after {
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.2;
     color: #ffffff;
     letter-spacing: -0.025em;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 h1 {
     font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-    letter-spacing: 3px;
+    font-weight: 500;
+    letter-spacing: -0.025em;
 }
 
 h2 {
     font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 600;
-    letter-spacing: 2px;
+    font-weight: 500;
+    letter-spacing: -0.025em;
 }
 
 h3 {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 h4 {
     font-size: 1.1rem;
-    font-weight: 600;
-    color: #00bfff;
+    font-weight: 500;
+    color: #ffffff;
 }
 
 p {
-    color: #a0a0a0;
+    color: rgba(255, 255, 255, 0.7);
     line-height: 1.7;
+    font-weight: 400;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .lead {
     font-size: 1.25rem;
     font-weight: 400;
-    color: #c0c0c0;
+    color: rgba(255, 255, 255, 0.8);
     line-height: 1.6;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* Glitch Text Effect */
@@ -207,12 +211,9 @@ p {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: transparent;
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    padding: 2rem 0;
 }
 
 .nav-container {
@@ -222,16 +223,17 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: auto;
 }
 
 .nav-logo a,
 .nav-logo .glitch-text {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 500;
     color: #ffffff;
     text-decoration: none;
     letter-spacing: -0.025em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .nav-menu {
@@ -241,28 +243,27 @@ p {
 }
 
 .nav-link {
-    color: #e2e8f0;
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 0.9rem;
     transition: all 0.3s ease;
     position: relative;
     letter-spacing: -0.025em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .nav-bracket {
-    color: #93c5fd;
-    transition: all 0.3s ease;
+    display: none;
 }
 
 .nav-link:hover,
 .nav-link.active {
     color: #ffffff;
-}
-
-.nav-link:hover .nav-bracket,
-.nav-link.active .nav-bracket {
-    color: #ddd6fe;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.3);
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
 }
 
 .hamburger {
@@ -348,57 +349,46 @@ p {
 .btn {
     display: inline-flex;
     align-items: center;
-    padding: 0.875rem 2rem;
-    border: 1px solid;
-    border-radius: 8px;
+    padding: 0.5rem 0;
+    background: transparent;
+    border: none;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 0.9rem;
     transition: all 0.3s ease;
     cursor: pointer;
     letter-spacing: -0.025em;
     position: relative;
-    overflow: hidden;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .btn-primary {
-    background-color: rgba(147, 197, 253, 0.1);
-    color: #ffffff;
-    border-color: rgba(147, 197, 253, 0.3);
+    color: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .btn-primary:hover {
-    background-color: rgba(147, 197, 253, 0.2);
-    border-color: rgba(147, 197, 253, 0.5);
-    transform: translateY(-1px);
+    color: #ffffff;
+    border-bottom-color: rgba(255, 255, 255, 0.4);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.4);
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
 }
 
 .btn-secondary {
-    background-color: rgba(255, 255, 255, 0.05);
-    color: #e2e8f0;
-    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.3);
-    color: #ffffff;
-    transform: translateY(-1px);
-}
-
-.btn-glow {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.5s;
-}
-
-.btn:hover .btn-glow {
-    left: 100%;
+    color: rgba(255, 255, 255, 0.9);
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.3);
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
 }
 
 /* 3D Network Rack */
