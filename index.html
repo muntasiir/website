@@ -3,30 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muntasir Khan - Portfolio</title>
+    <title>Muntasir Khan - Network Engineer</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Navigation Instructions -->
+    <div class="nav-instructions">
+        <div class="instruction-line">
+            <span class="cmd-prompt">$</span>
+            <span class="cmd-text">navigate --help</span>
+        </div>
+        <div class="instruction-line">
+            <span class="cmd-output">SCROLL | CLICK | EXPLORE</span>
+        </div>
+    </div>
+
+    <!-- Glitch Overlay -->
+    <div class="glitch-overlay"></div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="#home">MK</a>
+                <span class="glitch-text" data-text="MK.SYS">MK.SYS</span>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#home" class="nav-link">
+                        <span class="nav-bracket">[</span>HOME<span class="nav-bracket">]</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
+                    <a href="#about" class="nav-link">
+                        <span class="nav-bracket">[</span>ABOUT<span class="nav-bracket">]</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#work" class="nav-link">Work</a>
+                    <a href="#work" class="nav-link">
+                        <span class="nav-bracket">[</span>WORK<span class="nav-bracket">]</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#contact" class="nav-link">
+                        <span class="nav-bracket">[</span>CONTACT<span class="nav-bracket">]</span>
+                    </a>
                 </li>
             </ul>
             <div class="hamburger">
@@ -41,12 +63,113 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Muntasir Khan</h1>
-                <p class="hero-subtitle">Network Engineer</p>
-                <p class="hero-description">I design logical networks and </p>
+                <h1 class="glitch-text" data-text="MUNTASIR KHAN">MUNTASIR KHAN</h1>
+                <p class="hero-subtitle">
+                    <span class="typing-text">NETWORK_ENGINEER.EXE</span>
+                    <span class="cursor">|</span>
+                </p>
+                <p class="hero-description">Architecting digital infrastructures and logical networks</p>
                 <div class="hero-buttons">
-                    <a href="#work" class="btn btn-primary">View Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                    <a href="#work" class="btn btn-primary">
+                        <span class="btn-text">./view_work.sh</span>
+                        <span class="btn-glow"></span>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span class="btn-text">./connect.sh</span>
+                        <span class="btn-glow"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3D Network Rack -->
+        <div class="network-rack-container">
+            <div class="network-rack">
+                <!-- Rack Frame -->
+                <div class="rack-frame">
+                    <div class="rack-rail left-rail"></div>
+                    <div class="rack-rail right-rail"></div>
+                </div>
+                
+                <!-- Server Units -->
+                <div class="server-unit" style="--delay: 0s">
+                    <div class="server-face">
+                        <div class="server-lights">
+                            <div class="led power-led"></div>
+                            <div class="led activity-led"></div>
+                            <div class="led network-led"></div>
+                        </div>
+                        <div class="server-label">CORE-SW-01</div>
+                        <div class="server-ports">
+                            <div class="port"></div>
+                            <div class="port"></div>
+                            <div class="port active"></div>
+                            <div class="port active"></div>
+                        </div>
+                    </div>
+                    <div class="server-door">
+                        <div class="door-handle"></div>
+                    </div>
+                </div>
+
+                <div class="server-unit" style="--delay: 0.5s">
+                    <div class="server-face">
+                        <div class="server-lights">
+                            <div class="led power-led"></div>
+                            <div class="led activity-led"></div>
+                            <div class="led network-led"></div>
+                        </div>
+                        <div class="server-label">DIST-SW-02</div>
+                        <div class="server-ports">
+                            <div class="port active"></div>
+                            <div class="port"></div>
+                            <div class="port active"></div>
+                            <div class="port"></div>
+                        </div>
+                    </div>
+                    <div class="server-door">
+                        <div class="door-handle"></div>
+                    </div>
+                </div>
+
+                <div class="server-unit" style="--delay: 1s">
+                    <div class="server-face">
+                        <div class="server-lights">
+                            <div class="led power-led"></div>
+                            <div class="led activity-led"></div>
+                            <div class="led network-led"></div>
+                        </div>
+                        <div class="server-label">ACCESS-SW-03</div>
+                        <div class="server-ports">
+                            <div class="port"></div>
+                            <div class="port active"></div>
+                            <div class="port"></div>
+                            <div class="port active"></div>
+                        </div>
+                    </div>
+                    <div class="server-door">
+                        <div class="door-handle"></div>
+                    </div>
+                </div>
+
+                <div class="server-unit" style="--delay: 1.5s">
+                    <div class="server-face">
+                        <div class="server-lights">
+                            <div class="led power-led"></div>
+                            <div class="led activity-led"></div>
+                            <div class="led network-led"></div>
+                        </div>
+                        <div class="server-label">FW-CLUSTER-04</div>
+                        <div class="server-ports">
+                            <div class="port active"></div>
+                            <div class="port active"></div>
+                            <div class="port"></div>
+                            <div class="port"></div>
+                        </div>
+                    </div>
+                    <div class="server-door">
+                        <div class="door-handle"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,40 +179,41 @@
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
-                <h2>About</h2>
+                <h2 class="glitch-text" data-text="SYSTEM.INFO">SYSTEM.INFO</h2>
+                <div class="section-divider"></div>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p class="lead">I'm a passionate developer focused on creating meaningful digital experiences through clean, efficient code and user-centered design.</p>
-                    <p>With expertise in modern web technologies, I help businesses and individuals bring their ideas to life through thoughtful development and attention to detail.</p>
+                    <p class="lead">Specialized in designing robust network infrastructures and implementing scalable solutions for enterprise environments.</p>
+                    <p>With expertise in modern networking technologies, I architect systems that ensure optimal performance, security, and reliability.</p>
                 </div>
-                <div class="skills-list">
-                    <div class="skill-group">
-                        <h4>Frontend</h4>
-                        <ul>
-                            <li>React</li>
-                            <li>TypeScript</li>
-                            <li>Next.js</li>
-                            <li>Tailwind CSS</li>
-                        </ul>
+                <div class="skills-matrix">
+                    <div class="skill-category">
+                        <h4>NETWORKING</h4>
+                        <div class="skill-items">
+                            <span class="skill-tag">Cisco</span>
+                            <span class="skill-tag">Juniper</span>
+                            <span class="skill-tag">BGP/OSPF</span>
+                            <span class="skill-tag">MPLS</span>
+                        </div>
                     </div>
-                    <div class="skill-group">
-                        <h4>Backend</h4>
-                        <ul>
-                            <li>Node.js</li>
-                            <li>Python</li>
-                            <li>PostgreSQL</li>
-                            <li>MongoDB</li>
-                        </ul>
+                    <div class="skill-category">
+                        <h4>SECURITY</h4>
+                        <div class="skill-items">
+                            <span class="skill-tag">Firewalls</span>
+                            <span class="skill-tag">VPN</span>
+                            <span class="skill-tag">IDS/IPS</span>
+                            <span class="skill-tag">Zero Trust</span>
+                        </div>
                     </div>
-                    <div class="skill-group">
-                        <h4>Tools</h4>
-                        <ul>
-                            <li>Git</li>
-                            <li>Docker</li>
-                            <li>AWS</li>
-                            <li>Figma</li>
-                        </ul>
+                    <div class="skill-category">
+                        <h4>AUTOMATION</h4>
+                        <div class="skill-items">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Ansible</span>
+                            <span class="skill-tag">Terraform</span>
+                            <span class="skill-tag">APIs</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,71 +224,84 @@
     <section id="work" class="work">
         <div class="container">
             <div class="section-header">
-                <h2>Selected Work</h2>
+                <h2 class="glitch-text" data-text="PROJECTS.LOG">PROJECTS.LOG</h2>
+                <div class="section-divider"></div>
             </div>
             <div class="projects-grid">
                 <article class="project-card">
+                    <div class="project-header">
+                        <h3>Enterprise Network Redesign</h3>
+                        <div class="project-status">DEPLOYED</div>
+                    </div>
                     <div class="project-info">
-                        <h3>E-Commerce Platform</h3>
-                        <p>A modern e-commerce solution built with React and Node.js, featuring seamless user experience and robust backend architecture.</p>
+                        <p>Complete network infrastructure overhaul for 500+ user environment with redundant core, distribution, and access layers.</p>
                         <div class="project-tech">
-                            <span>React</span>
-                            <span>Node.js</span>
-                            <span>PostgreSQL</span>
+                            <span>Cisco Catalyst</span>
+                            <span>OSPF</span>
+                            <span>HSRP</span>
+                            <span>VLANs</span>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i>
-                                <span>Code</span>
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span>Live</span>
-                            </a>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-value">99.9%</span>
+                                <span class="metric-label">Uptime</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">40%</span>
+                                <span class="metric-label">Latency Reduction</span>
+                            </div>
                         </div>
                     </div>
                 </article>
 
                 <article class="project-card">
+                    <div class="project-header">
+                        <h3>SD-WAN Implementation</h3>
+                        <div class="project-status">ACTIVE</div>
+                    </div>
                     <div class="project-info">
-                        <h3>Task Management App</h3>
-                        <p>A collaborative task management application with real-time updates and intuitive drag-and-drop functionality.</p>
+                        <p>Multi-site SD-WAN deployment with centralized policy management and automated failover capabilities.</p>
                         <div class="project-tech">
-                            <span>Vue.js</span>
-                            <span>Socket.io</span>
-                            <span>MongoDB</span>
+                            <span>Cisco Viptela</span>
+                            <span>MPLS</span>
+                            <span>Internet</span>
+                            <span>4G LTE</span>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i>
-                                <span>Code</span>
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span>Live</span>
-                            </a>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-value">15</span>
+                                <span class="metric-label">Sites Connected</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">60%</span>
+                                <span class="metric-label">Cost Savings</span>
+                            </div>
                         </div>
                     </div>
                 </article>
 
                 <article class="project-card">
+                    <div class="project-header">
+                        <h3>Network Automation Suite</h3>
+                        <div class="project-status">BETA</div>
+                    </div>
                     <div class="project-info">
-                        <h3>Analytics Dashboard</h3>
-                        <p>An interactive data visualization dashboard providing real-time insights with clean, accessible design.</p>
+                        <p>Python-based automation framework for configuration management, monitoring, and incident response.</p>
                         <div class="project-tech">
                             <span>Python</span>
-                            <span>Flask</span>
-                            <span>D3.js</span>
+                            <span>Netmiko</span>
+                            <span>NAPALM</span>
+                            <span>Grafana</span>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i>
-                                <span>Code</span>
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i>
-                                <span>Live</span>
-                            </a>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-value">80%</span>
+                                <span class="metric-label">Time Saved</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">200+</span>
+                                <span class="metric-label">Devices Managed</span>
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -176,43 +313,63 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
-                <h2>Get in Touch</h2>
+                <h2 class="glitch-text" data-text="CONNECT.SH">CONNECT.SH</h2>
+                <div class="section-divider"></div>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <p class="contact-lead">Let's work together to bring your ideas to life.</p>
+                    <p class="contact-lead">Ready to architect your next network solution?</p>
                     <div class="contact-methods">
-                        <a href="mailto:your.email@example.com" class="contact-method">
+                        <a href="mailto:muntasirmkhan@hotmail.com" class="contact-method">
                             <i class="fas fa-envelope"></i>
                             <span>muntasirmkhan@hotmail.com</span>
                         </a>
-                        <a href="https://linkedin.com/in/yourprofile" class="contact-method">
+                        <a href="https://linkedin.com/in/muntasir-khan" class="contact-method">
                             <i class="fab fa-linkedin"></i>
-                            <span>LinkedIn</span>
+                            <span>LinkedIn Profile</span>
                         </a>
-                        <a href="https://github.com/yourusername" class="contact-method">
+                        <a href="https://github.com/muntasiir" class="contact-method">
                             <i class="fab fa-github"></i>
-                            <span>GitHub</span>
+                            <span>GitHub Repository</span>
                         </a>
                     </div>
                 </div>
-                <form class="contact-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Name" required>
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <div class="terminal-button close"></div>
+                            <div class="terminal-button minimize"></div>
+                            <div class="terminal-button maximize"></div>
                         </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Email" required>
-                        </div>
+                        <div class="terminal-title">contact_form.sh</div>
                     </div>
-                    <div class="form-group">
-                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    <div class="terminal-body">
+                        <form class="contact-form">
+                            <div class="form-line">
+                                <span class="prompt">name@client:~$</span>
+                                <input type="text" id="name" name="name" placeholder="enter_name" required>
+                            </div>
+                            <div class="form-line">
+                                <span class="prompt">email@client:~$</span>
+                                <input type="email" id="email" name="email" placeholder="enter_email" required>
+                            </div>
+                            <div class="form-line">
+                                <span class="prompt">subject@client:~$</span>
+                                <input type="text" id="subject" name="subject" placeholder="enter_subject" required>
+                            </div>
+                            <div class="form-line">
+                                <span class="prompt">message@client:~$</span>
+                                <textarea id="message" name="message" placeholder="enter_message" rows="4" required></textarea>
+                            </div>
+                            <div class="form-line">
+                                <button type="submit" class="terminal-submit">
+                                    <span>./send_message.sh</span>
+                                    <span class="submit-cursor">|</span>
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
+                </div>
             </div>
         </div>
     </section>
@@ -220,7 +377,13 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Muntasir. All rights reserved.</p>
+            <div class="footer-content">
+                <p>&copy; 2025 Muntasir Khan. All systems operational.</p>
+                <div class="system-status">
+                    <span class="status-indicator"></span>
+                    <span>ONLINE</span>
+                </div>
+            </div>
         </div>
     </footer>
 
