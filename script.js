@@ -31,11 +31,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
+        navbar.style.background = 'rgba(10, 15, 28, 0.98)';
+        navbar.style.boxShadow = '0 2px 20px rgba(0, 255, 136, 0.2)';
     } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        navbar.style.background = 'rgba(10, 15, 28, 0.95)';
+        navbar.style.boxShadow = '0 2px 20px rgba(0, 255, 136, 0.1)';
     }
 });
 
@@ -76,17 +76,17 @@ if (contactForm) {
         
         // Simple validation
         if (!name || !email || !subject || !message) {
-            showNotification('Please fill in all fields.', 'error');
+            showTerminalMessage('ERROR: All fields required', 'error');
             return;
         }
         
         if (!isValidEmail(email)) {
-            showNotification('Please enter a valid email address.', 'error');
+            showTerminalMessage('ERROR: Invalid email format', 'error');
             return;
         }
         
-        // Simulate form submission (replace with actual form handling)
-        showNotification('Thank you for your message! I\'ll get back to you soon.', 'success');
+        // Simulate form submission
+        showTerminalMessage('Message sent successfully!', 'success');
         this.reset();
     });
 }
@@ -97,34 +97,50 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-// Notification system
-function showNotification(message, type = 'info') {
+// Terminal-style notification system
+function showTerminalMessage(message, type = 'info') {
     // Remove existing notifications
-    const existingNotification = document.querySelector('.notification');
+    const existingNotification = document.querySelector('.terminal-notification');
     if (existingNotification) {
         existingNotification.remove();
     }
     
     // Create notification element
     const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.textContent = message;
+    notification.className = `terminal-notification terminal-${type}`;
+    
+    const colors = {
+        success: '#00ff88',
+        error: '#ff0040',
+        info: '#00bfff'
+    };
+    
+    notification.innerHTML = `
+        <div class="terminal-msg-header">
+            <span class="terminal-prompt">system@portfolio:~$</span>
+            <span class="terminal-timestamp">${new Date().toLocaleTimeString()}</span>
+        </div>
+        <div class="terminal-msg-body">${message}</div>
+    `;
     
     // Add styles
     notification.style.cssText = `
         position: fixed;
         top: 100px;
         right: 20px;
-        background: ${type === 'success' ? '#27ae60' : type === 'error' ? '#e74c3c' : '#3498db'};
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 5px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        background: rgba(0, 0, 0, 0.95);
+        color: ${colors[type]};
+        padding: 1rem;
+        border: 1px solid ${colors[type]};
+        border-radius: 4px;
+        box-shadow: 0 0 20px ${colors[type]}40;
         z-index: 10000;
         transform: translateX(400px);
         transition: transform 0.3s ease;
-        max-width: 300px;
-        word-wrap: break-word;
+        max-width: 350px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        backdrop-filter: blur(10px);
     `;
     
     document.body.appendChild(notification);
@@ -134,7 +150,7 @@ function showNotification(message, type = 'info') {
         notification.style.transform = 'translateX(0)';
     }, 100);
     
-    // Remove after 5 seconds
+    // Remove after 4 seconds
     setTimeout(() => {
         notification.style.transform = 'translateX(400px)';
         setTimeout(() => {
@@ -142,33 +158,69 @@ function showNotification(message, type = 'info') {
                 notification.parentNode.removeChild(notification);
             }
         }, 300);
-    }, 5000);
+    }, 4000);
 }
 
-// Intersection Observer for animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe elements for animation
-document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.project-card, .skill-category, .about-stats .stat');
+// Glitch effect for text elements
+function addGlitchEffect(element) {
+    const originalText = element.textContent;
+    const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
     
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
+    let glitchInterval = setInterval(() => {
+        if (Math.random() < 0.1) { // 10% chance to glitch
+            let glitchedText = '';
+            for (let i = 0; i < originalText.length; i++) {
+                if (Math.random() < 0.1) {
+                    glitchedText += glitchChars[Math.floor(Math.random() * glitchChars.length)];
+                } else {
+                    glitchedText += originalText[i];
+                }
+            }
+            element.textContent = glitchedText;
+            
+            setTimeout(() => {
+                element.textContent = originalText;
+            }, 50);
+        }
+    }, 100);
+    
+    // Stop glitching after 10 seconds
+    setTimeout(() => {
+        clearInterval(glitchInterval);
+    }, 10000);
+}
+
+// Network rack interactions
+document.addEventListener('DOMContentLoaded', () => {
+    const serverUnits = document.querySelectorAll('.server-unit');
+    
+    serverUnits.forEach((unit, index) => {
+        unit.addEventListener('click', () => {
+            // Add click effect
+            unit.style.transform = 'translateZ(20px) scale(1.05)';
+            
+            // Show server info
+            const serverLabel = unit.querySelector('.server-label').textContent;
+            showTerminalMessage(`Accessing ${serverLabel}...`, 'info');
+            
+            // Reset transform after animation
+            setTimeout(() => {
+                unit.style.transform = '';
+            }, 300);
+        });
+        
+        // Add random LED blinking
+        const leds = unit.querySelectorAll('.led');
+        leds.forEach(led => {
+            setInterval(() => {
+                if (Math.random() < 0.3) {
+                    led.style.opacity = '0.2';
+                    setTimeout(() => {
+                        led.style.opacity = '1';
+                    }, 100);
+                }
+            }, 2000 + Math.random() * 3000);
+        });
     });
 });
 
@@ -182,6 +234,11 @@ function typeWriter(element, text, speed = 100) {
             element.innerHTML += text.charAt(i);
             i++;
             setTimeout(type, speed);
+        } else {
+            // Add glitch effect after typing is complete
+            setTimeout(() => {
+                addGlitchEffect(element);
+            }, 1000);
         }
     }
     
@@ -192,10 +249,18 @@ function typeWriter(element, text, speed = 100) {
 document.addEventListener('DOMContentLoaded', () => {
     const heroTitle = document.querySelector('.hero h1');
     if (heroTitle) {
-        const originalText = heroTitle.innerHTML;
+        const originalText = heroTitle.textContent;
         setTimeout(() => {
-            typeWriter(heroTitle, originalText, 50);
-        }, 1000);
+            typeWriter(heroTitle, originalText, 80);
+        }, 1500);
+    }
+    
+    // Add glitch effect to navigation logo
+    const navLogo = document.querySelector('.nav-logo .glitch-text');
+    if (navLogo) {
+        setTimeout(() => {
+            addGlitchEffect(navLogo);
+        }, 3000);
     }
 });
 
@@ -203,45 +268,64 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
+    const networkRack = document.querySelector('.network-rack');
+    
     if (hero) {
-        const rate = scrolled * -0.5;
+        const rate = scrolled * -0.3;
         hero.style.transform = `translateY(${rate}px)`;
     }
-});
-
-// Skills animation on scroll
-const skillsSection = document.querySelector('#skills');
-let skillsAnimated = false;
-
-window.addEventListener('scroll', () => {
-    if (!skillsAnimated && skillsSection) {
-        const skillsTop = skillsSection.offsetTop;
-        const skillsHeight = skillsSection.clientHeight;
-        const windowHeight = window.innerHeight;
-        
-        if (window.scrollY > skillsTop - windowHeight + skillsHeight / 2) {
-            animateSkills();
-            skillsAnimated = true;
-        }
+    
+    if (networkRack) {
+        const rate = scrolled * 0.1;
+        networkRack.style.transform = `rotateY(-15deg) rotateX(5deg) translateY(${rate}px)`;
     }
 });
 
-function animateSkills() {
-    const skillItems = document.querySelectorAll('.skill-item');
-    skillItems.forEach((item, index) => {
-        setTimeout(() => {
-            item.style.transform = 'scale(1.05)';
-            setTimeout(() => {
-                item.style.transform = 'scale(1)';
-            }, 200);
-        }, index * 100);
-    });
-}
+// Intersection Observer for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
 
-// Project card hover effects
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            
+            // Add special effects for different elements
+            if (entry.target.classList.contains('project-card')) {
+                entry.target.style.animation = 'slideInUp 0.6s ease-out';
+            }
+            
+            if (entry.target.classList.contains('skill-category')) {
+                entry.target.style.animation = 'fadeInScale 0.6s ease-out';
+            }
+        }
+    });
+}, observerOptions);
+
+// Observe elements for animation
+document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('.project-card, .skill-category');
+    
+    animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+});
+
+// Project card hover effects with sound simulation
 document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-10px) scale(1.02)';
+        
+        // Simulate terminal beep
+        if (Math.random() < 0.3) {
+            showTerminalMessage('Project accessed', 'info');
+        }
     });
     
     card.addEventListener('mouseleave', function() {
@@ -252,68 +336,171 @@ document.querySelectorAll('.project-card').forEach(card => {
 // Add loading animation
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
+    
+    // Show system startup message
+    setTimeout(() => {
+        showTerminalMessage('System initialized successfully', 'success');
+    }, 1000);
 });
 
-// Add CSS for loading animation
-const loadingStyles = `
-    body:not(.loaded) {
-        overflow: hidden;
+// Matrix rain effect (subtle)
+function createMatrixRain() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '1';
+    canvas.style.opacity = '0.05';
+    
+    document.body.appendChild(canvas);
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const chars = '01';
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+    
+    for (let i = 0; i < columns; i++) {
+        drops[i] = 1;
     }
     
-    body:not(.loaded)::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        z-index: 10000;
+    function draw() {
+        ctx.fillStyle = 'rgba(10, 15, 28, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.fillStyle = '#00ff88';
+        ctx.font = fontSize + 'px JetBrains Mono';
+        
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars[Math.floor(Math.random() * chars.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+    
+    setInterval(draw, 100);
+    
+    // Resize handler
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+}
+
+// Initialize matrix rain effect
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(createMatrixRain, 2000);
+});
+
+// Add CSS animations
+const additionalStyles = `
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fadeInScale {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    .terminal-msg-header {
         display: flex;
-        align-items: center;
-        justify-content: center;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        font-size: 0.7rem;
+        opacity: 0.8;
     }
     
-    body:not(.loaded)::after {
-        content: '';
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 50px;
-        height: 50px;
-        border: 3px solid rgba(255, 255, 255, 0.3);
-        border-top: 3px solid white;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-        z-index: 10001;
+    .terminal-prompt {
+        color: #00bfff;
     }
     
-    @keyframes spin {
-        0% { transform: translate(-50%, -50%) rotate(0deg); }
-        100% { transform: translate(-50%, -50%) rotate(360deg); }
+    .terminal-timestamp {
+        color: #888;
+    }
+    
+    .terminal-msg-body {
+        font-weight: 600;
+        text-shadow: 0 0 5px currentColor;
     }
     
     .nav-link.active {
-        color: #3498db !important;
-        font-weight: 600;
+        color: #00ff88 !important;
+        text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    }
+    
+    .nav-link.active .nav-bracket {
+        color: #ff0040 !important;
+        text-shadow: 0 0 10px rgba(255, 0, 64, 0.5);
     }
 `;
 
-// Inject loading styles
+// Inject additional styles
 const styleSheet = document.createElement('style');
-styleSheet.textContent = loadingStyles;
+styleSheet.textContent = additionalStyles;
 document.head.appendChild(styleSheet);
-
-
 
 // Console message for developers
 console.log(`
-🚀 Portfolio Website Loaded Successfully!
-📧 Contact: your.email@example.com
-🔗 GitHub: https://github.com/yourusername
-💼 LinkedIn: https://linkedin.com/in/yourprofile
+🚀 High-Tech Portfolio System Online!
+📧 Contact: muntasirmkhan@hotmail.com
+🔗 GitHub: https://github.com/muntasiir
+💼 LinkedIn: https://linkedin.com/in/muntasir-khan
+
+System Status: OPERATIONAL
+Network Rack: ACTIVE
+Glitch Effects: ENABLED
+Matrix Rain: INITIALIZED
 
 Built with HTML, CSS, and JavaScript
-Ready for GitHub Pages deployment!
+Optimized for modern browsers
 `);
+
+// Easter egg - Konami code
+let konamiCode = [];
+const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+
+document.addEventListener('keydown', (e) => {
+    konamiCode.push(e.keyCode);
+    
+    if (konamiCode.length > konamiSequence.length) {
+        konamiCode.shift();
+    }
+    
+    if (konamiCode.join(',') === konamiSequence.join(',')) {
+        showTerminalMessage('KONAMI CODE ACTIVATED! 🎮', 'success');
+        
+        // Add special effect
+        document.body.style.animation = 'glitch-text 0.5s ease-in-out 3';
+        
+        setTimeout(() => {
+            document.body.style.animation = '';
+        }, 1500);
+        
+        konamiCode = [];
+    }
+});
