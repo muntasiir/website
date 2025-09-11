@@ -13,13 +13,14 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: #ffffff;
-    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #3b82f6 50%, #1e40af 75%, #1e3a8a 100%);
+    background: linear-gradient(135deg, #0A1F44 0%, #121927 25%, #2B3A67 50%, #121927 75%, #0A1F44 100%);
     background-attachment: fixed;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
     position: relative;
+    min-height: 100vh;
 }
 
 body::before {
@@ -30,9 +31,23 @@ body::before {
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(147, 197, 253, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(30, 64, 175, 0.03) 0%, transparent 50%);
+        radial-gradient(ellipse at 30% 20%, rgba(31, 60, 114, 0.4) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 80%, rgba(31, 60, 114, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(43, 58, 103, 0.2) 0%, transparent 70%),
+        linear-gradient(180deg, rgba(31, 60, 114, 0.1) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: -2;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.02"/></svg>');
     pointer-events: none;
     z-index: -1;
 }
