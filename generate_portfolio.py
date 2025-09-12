@@ -27,8 +27,8 @@ class PortfolioGenerator:
         config = {
             "personal_info": {
                 "name": "Muntasir Khan",
-                "title": "Network Engineer",
-                "description": "I create logical networks and ensure seamless connectivity.",
+                "title": "Student",
+                "description": "My portfolio website",
                 "email": "muntasirmkhan@hotmail.com",
                 "phone": "+1 (647) 916-9223",
                 "location": "Toronto, Canada",
@@ -40,7 +40,7 @@ class PortfolioGenerator:
             },
             "about": {
                 "description": [
-                    "I'm a passionate network engineer with a knack for designing efficient and scalable networks.",
+                    "",
                 ],
                 "stats": {
                     "projects": "50+",
