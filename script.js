@@ -2,16 +2,18 @@
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
+if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
 
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
-}));
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }));
+}
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -30,14 +32,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Navbar background change on scroll
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(18, 25, 39, 0.95)';
-        navbar.style.backdropFilter = 'blur(20px)';
-        navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
-    } else {
-        navbar.style.background = 'transparent';
-        navbar.style.backdropFilter = 'none';
-        navbar.style.borderBottom = 'none';
+    if (navbar) {
+        if (window.scrollY > 100) {
+            navbar.style.background = 'rgba(18, 25, 39, 0.95)';
+            navbar.style.backdropFilter = 'blur(20px)';
+        } else {
+            navbar.style.background = 'transparent';
+            navbar.style.backdropFilter = 'none';
+        }
     }
 });
 
@@ -69,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cubeContainer = document.querySelector('.cube-container');
     
     if (cube && cubeContainer) {
-        // Mouse interaction with cube
+        // Mouse interaction with cube - subtle movement
         cubeContainer.addEventListener('mousemove', (e) => {
             const rect = cubeContainer.getBoundingClientRect();
             const centerX = rect.left + rect.width / 2;
@@ -78,10 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const mouseX = e.clientX - centerX;
             const mouseY = e.clientY - centerY;
             
-            const rotateX = (mouseY / rect.height) * 30;
-            const rotateY = (mouseX / rect.width) * 30;
+            const rotateX = (mouseY / rect.height) * 15;
+            const rotateY = (mouseX / rect.width) * 15;
             
-            cube.style.transform = `rotateX(${15 + rotateX}deg) rotateY(${rotateY}deg) rotateZ(5deg)`;
+            cube.style.transform = `rotateX(${10 + rotateX}deg) rotateY(${rotateY}deg) rotateZ(2deg)`;
         });
         
         // Reset cube rotation when mouse leaves
@@ -89,39 +91,39 @@ document.addEventListener('DOMContentLoaded', () => {
             cube.style.transform = '';
         });
         
-        // Click interaction
+        // Click interaction - elegant spin
         cube.addEventListener('click', () => {
             cube.style.animation = 'none';
-            cube.style.transform = 'rotateX(15deg) rotateY(720deg) rotateZ(5deg) scale(1.1)';
+            cube.style.transform = 'rotateX(10deg) rotateY(720deg) rotateZ(2deg) scale(1.05)';
             
             setTimeout(() => {
-                cube.style.animation = 'cube-rotate 20s linear infinite, cube-hover 6s ease-in-out infinite';
+                cube.style.animation = 'cube-rotate 25s linear infinite, cube-hover 8s ease-in-out infinite';
                 cube.style.transform = '';
-            }, 1000);
+            }, 1200);
         });
     }
 });
 
-// Parallax effect for hero section
+// Subtle parallax effect for hero section
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const cube = document.querySelector('.cube');
     const heroContent = document.querySelector('.hero-content');
     
     if (cube) {
-        const rate = scrolled * 0.1;
+        const rate = scrolled * 0.05;
         cube.style.transform = `translateY(${rate}px)`;
     }
     
     if (heroContent) {
-        const rate = scrolled * -0.2;
+        const rate = scrolled * -0.1;
         heroContent.style.transform = `translateY(${rate}px)`;
     }
 });
 
-// Intersection Observer for animations
+// Intersection Observer for smooth animations
 const observerOptions = {
-    threshold: 0.1,
+    threshold: 0.15,
     rootMargin: '0px 0px -50px 0px'
 };
 
@@ -131,13 +133,17 @@ const observer = new IntersectionObserver((entries) => {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
             
-            // Add special effects for different elements
+            // Add elegant entrance animations
             if (entry.target.classList.contains('project-card')) {
-                entry.target.style.animation = 'slideInUp 0.8s ease-out';
+                entry.target.style.animation = 'slideInUp 1s ease-out';
             }
             
             if (entry.target.classList.contains('skill-category')) {
-                entry.target.style.animation = 'fadeInScale 0.8s ease-out';
+                entry.target.style.animation = 'fadeInScale 1s ease-out';
+            }
+            
+            if (entry.target.classList.contains('about-text')) {
+                entry.target.style.animation = 'fadeIn 1.2s ease-out';
             }
         }
     });
@@ -149,17 +155,17 @@ document.addEventListener('DOMContentLoaded', () => {
     
     animatedElements.forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 1s ease, transform 1s ease';
         observer.observe(el);
     });
 });
 
-// Project card hover effects
+// Elegant hover effects for project cards
 document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-10px)';
-        this.style.boxShadow = '0 20px 40px rgba(255, 255, 255, 0.1)';
+        this.style.transform = 'translateY(-5px)';
+        this.style.boxShadow = '0 15px 30px rgba(255, 255, 255, 0.08)';
     });
     
     card.addEventListener('mouseleave', function() {
@@ -168,10 +174,10 @@ document.querySelectorAll('.project-card').forEach(card => {
     });
 });
 
-// Skill tag hover effects
+// Subtle hover effects for skill tags
 document.querySelectorAll('.skill-tag').forEach(tag => {
     tag.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-2px)';
+        this.style.transform = 'translateY(-1px)';
     });
     
     tag.addEventListener('mouseleave', function() {
@@ -179,10 +185,10 @@ document.querySelectorAll('.skill-tag').forEach(tag => {
     });
 });
 
-// Contact method hover effects
+// Smooth hover effects for contact methods
 document.querySelectorAll('.contact-method').forEach(method => {
     method.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateX(5px)';
+        this.style.transform = 'translateX(3px)';
     });
     
     method.addEventListener('mouseleave', function() {
@@ -190,105 +196,29 @@ document.querySelectorAll('.contact-method').forEach(method => {
     });
 });
 
-// Cube face individual animations
+// Enhanced cube face interactions
 document.addEventListener('DOMContentLoaded', () => {
     const cubeFaces = document.querySelectorAll('.cube-face');
     
     cubeFaces.forEach((face, index) => {
-        // Add subtle individual animations to each face
-        face.style.animationDelay = `${index * 0.5}s`;
+        // Staggered animation delays for elegance
+        face.style.animationDelay = `${index * 0.3}s`;
         
-        // Add hover effect to individual faces
+        // Subtle individual face hover effects
         face.addEventListener('mouseenter', () => {
             face.style.background = `linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.25) 0%, 
-                rgba(255, 255, 255, 0.1) 50%, 
-                rgba(0, 0, 0, 0.05) 100%)`;
+                rgba(255, 255, 255, 0.18) 0%, 
+                rgba(255, 255, 255, 0.06) 50%, 
+                rgba(0, 0, 0, 0.06) 100%)`;
         });
         
         face.addEventListener('mouseleave', () => {
             face.style.background = `linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.15) 0%, 
-                rgba(255, 255, 255, 0.05) 50%, 
-                rgba(0, 0, 0, 0.1) 100%)`;
+                rgba(255, 255, 255, 0.12) 0%, 
+                rgba(255, 255, 255, 0.04) 50%, 
+                rgba(0, 0, 0, 0.08) 100%)`;
         });
     });
 });
 
-// Enhanced scroll effects
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    const scrollProgress = scrolled / (documentHeight - windowHeight);
-    
-    // Update cube rotation based on scroll
-    const cube = document.querySelector('.cube');
-    if (cube) {
-        const rotationY = scrollProgress * 360;
-        cube.style.setProperty('--scroll-rotation', `${rotationY}deg`);
-    }
-    
-    // Parallax effect for background layers
-    const body = document.body;
-    body.style.setProperty('--scroll-offset', `${scrolled * 0.5}px`);
-});
-
-// Keyboard navigation enhancement
-document.addEventListener('keydown', (e) => {
-    // Space bar to pause/resume cube animation
-    if (e.code === 'Space' && e.target === document.body) {
-        e.preventDefault();
-        const cube = document.querySelector('.cube');
-        if (cube) {
-            const currentAnimation = cube.style.animationPlayState;
-            cube.style.animationPlayState = currentAnimation === 'paused' ? 'running' : 'paused';
-        }
-    }
-});
-
-// Add CSS animations
-const additionalStyles = `
-    @keyframes slideInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    @keyframes fadeInScale {
-        from {
-            opacity: 0;
-            transform: scale(0.9);
-        }
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-`;
-
-// Inject additional styles
-const styleSheet = document.createElement('style');
-styleSheet.textContent = additionalStyles;
-document.head.appendChild(styleSheet);
-
-// Console message for developers
-console.log(`
-🚀 Photorealistic 3D Cube Portfolio Online!
-📧 Contact: muntasirmkhan@hotmail.com
-🔗 GitHub: https://github.com/muntasiir
-💼 LinkedIn: https://linkedin.com/in/muntasir-khan
-
-System Status: OPERATIONAL
-3D Cube: ACTIVE
-Animations: ENABLED
-Dark Landscape: INITIALIZED
-
-Built with HTML, CSS, and JavaScript
-Optimized for modern browsers with 3D transforms
-`);
+//

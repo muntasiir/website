@@ -22,7 +22,7 @@ body {
     min-height: 100vh;
 }
 
-/* Dark Digital Landscape Background */
+/* Photorealistic Dark Digital Landscape Background */
 body::before {
     content: '';
     position: fixed;
@@ -32,35 +32,45 @@ body::before {
     height: 100%;
     background: 
         /* Deep atmospheric fog layers */
-        radial-gradient(ellipse 1200px 600px at 30% 20%, rgba(10, 31, 68, 0.4) 0%, transparent 50%),
-        radial-gradient(ellipse 800px 400px at 70% 60%, rgba(43, 58, 103, 0.3) 0%, transparent 60%),
-        radial-gradient(ellipse 600px 300px at 20% 80%, rgba(10, 31, 68, 0.2) 0%, transparent 70%),
-        /* Gradient depth layers */
-        linear-gradient(180deg, 
+        radial-gradient(ellipse 1400px 700px at 25% 15%, rgba(10, 31, 68, 0.3) 0%, transparent 60%),
+        radial-gradient(ellipse 1000px 500px at 75% 70%, rgba(43, 58, 103, 0.25) 0%, transparent 65%),
+        radial-gradient(ellipse 800px 400px at 15% 85%, rgba(10, 31, 68, 0.2) 0%, transparent 70%),
+        radial-gradient(ellipse 600px 300px at 85% 25%, rgba(43, 58, 103, 0.15) 0%, transparent 75%),
+        /* Gradient depth layers for cinematic feel */
+        linear-gradient(135deg, 
             #0A1F44 0%, 
-            #121927 30%, 
-            #2B3A67 60%, 
-            #121927 100%
+            #121927 25%, 
+            #2B3A67 50%, 
+            #121927 75%,
+            #0A1F44 100%
         ),
-        /* Subtle texture overlay */
-        radial-gradient(circle at 50% 50%, rgba(43, 58, 103, 0.1) 0%, transparent 50%);
+        /* Subtle light rays */
+        linear-gradient(45deg, 
+            transparent 0%, 
+            rgba(43, 58, 103, 0.05) 30%, 
+            transparent 60%
+        );
     pointer-events: none;
     z-index: -2;
-    animation: atmospheric-drift 30s ease-in-out infinite;
+    animation: atmospheric-flow 40s ease-in-out infinite;
 }
 
-@keyframes atmospheric-drift {
+@keyframes atmospheric-flow {
     0%, 100% { 
         opacity: 1;
-        transform: translateY(0px) scale(1);
+        transform: translateY(0px) scale(1) rotate(0deg);
     }
-    33% { 
+    25% { 
         opacity: 0.95;
-        transform: translateY(-5px) scale(1.01);
+        transform: translateY(-3px) scale(1.005) rotate(0.2deg);
     }
-    66% { 
+    50% { 
         opacity: 0.98;
-        transform: translateY(3px) scale(0.99);
+        transform: translateY(2px) scale(0.998) rotate(-0.1deg);
+    }
+    75% { 
+        opacity: 0.96;
+        transform: translateY(-1px) scale(1.002) rotate(0.1deg);
     }
 }
 
@@ -72,24 +82,29 @@ body::after {
     width: 100%;
     height: 100%;
     background: 
-        /* Soft fog overlay */
-        radial-gradient(ellipse 400px 200px at 40% 30%, rgba(43, 58, 103, 0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 300px 150px at 80% 70%, rgba(10, 31, 68, 0.06) 0%, transparent 60%),
-        /* Very subtle noise texture */
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.3" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.02"/></svg>');
+        /* Soft fog overlay for depth */
+        radial-gradient(ellipse 500px 250px at 30% 40%, rgba(43, 58, 103, 0.06) 0%, transparent 80%),
+        radial-gradient(ellipse 400px 200px at 70% 60%, rgba(10, 31, 68, 0.04) 0%, transparent 75%),
+        radial-gradient(ellipse 300px 150px at 50% 80%, rgba(43, 58, 103, 0.03) 0%, transparent 70%),
+        /* Ultra-subtle texture for realism */
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.2" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.015"/></svg>');
     pointer-events: none;
     z-index: -1;
-    animation: fog-drift 25s ease-in-out infinite;
+    animation: fog-drift 35s ease-in-out infinite;
 }
 
 @keyframes fog-drift {
     0%, 100% { 
         opacity: 1;
-        transform: translateX(0px);
+        transform: translateX(0px) translateY(0px);
     }
-    50% { 
-        opacity: 0.95;
-        transform: translateX(2px);
+    33% { 
+        opacity: 0.97;
+        transform: translateX(1px) translateY(-1px);
+    }
+    66% { 
+        opacity: 0.99;
+        transform: translateX(-1px) translateY(1px);
     }
 }
 
@@ -99,20 +114,16 @@ body::after {
     padding: 0 2rem;
 }
 
-/* Navigation Instructions */
+/* Navigation Instructions - Extreme Edge */
 .nav-instructions {
     position: fixed;
-    top: 30px;
-    right: 30px;
+    top: 20px;
+    right: 20px;
     z-index: 1001;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 300;
-    color: rgba(255, 255, 255, 0.5);
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
-
-.cmd-text {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.4);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
     letter-spacing: 0.5px;
 }
 
@@ -123,7 +134,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
     color: #FFFFFF;
     letter-spacing: -0.025em;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 h1 {
@@ -150,10 +161,10 @@ h4 {
 }
 
 p {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.7;
     font-weight: 400;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
 }
 
 .lead {
@@ -161,17 +172,18 @@ p {
     font-weight: 400;
     color: rgba(255, 255, 255, 0.9);
     line-height: 1.6;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
 }
 
-/* Minimal Navigation */
+/* Minimal Navigation - Extreme Edge */
 .navbar {
     position: fixed;
     top: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
     background: transparent;
     z-index: 1000;
-    padding: 2rem 0;
+    padding: 1.5rem 0;
 }
 
 .nav-container {
@@ -184,53 +196,53 @@ p {
 }
 
 .nav-logo span {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: #FFFFFF;
     text-decoration: none;
     letter-spacing: -0.025em;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 3rem;
+    gap: 2.5rem;
 }
 
 .nav-link {
     color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
     font-weight: 300;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     transition: all 0.3s ease;
     position: relative;
-    letter-spacing: 0.5px;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.3px;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
 }
 
 .nav-link:hover,
 .nav-link.active {
     color: #FFFFFF;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
-    gap: 4px;
+    gap: 3px;
 }
 
 .bar {
-    width: 24px;
-    height: 2px;
+    width: 20px;
+    height: 1px;
     background-color: #FFFFFF;
     transition: 0.3s;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
 }
 
-/* Hero Section with 3D Cube */
+/* Hero Section with Photorealistic 3D Cube */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -244,10 +256,10 @@ p {
 
 .cube-container {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     margin-bottom: 4rem;
-    perspective: 1500px;
+    perspective: 1200px;
 }
 
 .cube {
@@ -255,35 +267,35 @@ p {
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    animation: cube-rotate 20s linear infinite, cube-hover 6s ease-in-out infinite;
-    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6)) 
-            drop-shadow(0 0 30px rgba(255, 255, 255, 0.1));
+    animation: cube-rotate 25s linear infinite, cube-hover 8s ease-in-out infinite;
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4)) 
+            drop-shadow(0 0 25px rgba(255, 255, 255, 0.08));
 }
 
 @keyframes cube-rotate {
-    0% { transform: rotateX(15deg) rotateY(0deg) rotateZ(5deg); }
-    100% { transform: rotateX(15deg) rotateY(360deg) rotateZ(5deg); }
+    0% { transform: rotateX(10deg) rotateY(0deg) rotateZ(2deg); }
+    100% { transform: rotateX(10deg) rotateY(360deg) rotateZ(2deg); }
 }
 
 @keyframes cube-hover {
-    0%, 100% { transform: translateY(0px) rotateX(15deg) rotateY(0deg) rotateZ(5deg); }
-    50% { transform: translateY(-15px) rotateX(15deg) rotateY(180deg) rotateZ(5deg); }
+    0%, 100% { transform: translateY(0px) rotateX(10deg) rotateY(0deg) rotateZ(2deg); }
+    50% { transform: translateY(-12px) rotateX(10deg) rotateY(180deg) rotateZ(2deg); }
 }
 
 .cube-face {
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.15) 0%, 
-        rgba(255, 255, 255, 0.05) 50%, 
-        rgba(0, 0, 0, 0.1) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
+        rgba(255, 255, 255, 0.12) 0%, 
+        rgba(255, 255, 255, 0.04) 50%, 
+        rgba(0, 0, 0, 0.08) 100%);
+    backdrop-filter: blur(8px);
     box-shadow: 
-        inset 0 0 50px rgba(255, 255, 255, 0.1),
-        inset 0 0 100px rgba(255, 255, 255, 0.05),
-        0 0 50px rgba(255, 255, 255, 0.1);
+        inset 0 0 40px rgba(255, 255, 255, 0.08),
+        inset 0 0 80px rgba(255, 255, 255, 0.04),
+        0 0 30px rgba(255, 255, 255, 0.06);
+    border-radius: 2px;
 }
 
 .cube-face::before {
@@ -294,10 +306,11 @@ p {
     right: 0;
     bottom: 0;
     background: linear-gradient(45deg, 
-        transparent 30%, 
-        rgba(255, 255, 255, 0.1) 50%, 
-        transparent 70%);
-    animation: face-shimmer 8s ease-in-out infinite;
+        transparent 20%, 
+        rgba(255, 255, 255, 0.06) 50%, 
+        transparent 80%);
+    animation: face-shimmer 12s ease-in-out infinite;
+    border-radius: 2px;
 }
 
 @keyframes face-shimmer {
@@ -305,68 +318,39 @@ p {
     50% { opacity: 1; }
 }
 
-.face-content {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.face-pattern {
-    width: 80%;
-    height: 80%;
-    background: radial-gradient(circle at center, 
-        rgba(255, 255, 255, 0.1) 0%, 
-        transparent 70%);
-    border-radius: 50%;
-    animation: pattern-pulse 4s ease-in-out infinite;
-}
-
-@keyframes pattern-pulse {
-    0%, 100% { 
-        transform: scale(1);
-        opacity: 0.3;
-    }
-    50% { 
-        transform: scale(1.1);
-        opacity: 0.6;
-    }
-}
-
 /* Cube Face Positioning */
-.front { transform: rotateY(0deg) translateZ(150px); }
-.back { transform: rotateY(180deg) translateZ(150px); }
-.right { transform: rotateY(90deg) translateZ(150px); }
-.left { transform: rotateY(-90deg) translateZ(150px); }
-.top { transform: rotateX(90deg) translateZ(150px); }
-.bottom { transform: rotateX(-90deg) translateZ(150px); }
+.front { transform: rotateY(0deg) translateZ(140px); }
+.back { transform: rotateY(180deg) translateZ(140px); }
+.right { transform: rotateY(90deg) translateZ(140px); }
+.left { transform: rotateY(-90deg) translateZ(140px); }
+.top { transform: rotateX(90deg) translateZ(140px); }
+.bottom { transform: rotateX(-90deg) translateZ(140px); }
 
-/* Cube Glow Effect */
+/* Cube Soft Glow Effect */
 .cube::after {
     content: '';
     position: absolute;
-    top: -50px;
-    left: -50px;
-    right: -50px;
-    bottom: -50px;
+    top: -40px;
+    left: -40px;
+    right: -40px;
+    bottom: -40px;
     background: radial-gradient(circle at center, 
-        rgba(255, 255, 255, 0.1) 0%, 
-        transparent 70%);
+        rgba(255, 255, 255, 0.08) 0%, 
+        rgba(255, 255, 255, 0.02) 50%,
+        transparent 80%);
     border-radius: 50%;
-    animation: cube-glow 8s ease-in-out infinite;
+    animation: cube-glow 10s ease-in-out infinite;
     z-index: -1;
 }
 
 @keyframes cube-glow {
     0%, 100% { 
-        opacity: 0.3;
+        opacity: 0.6;
         transform: scale(1);
     }
     50% { 
-        opacity: 0.6;
-        transform: scale(1.2);
+        opacity: 0.9;
+        transform: scale(1.15);
     }
 }
 
@@ -383,17 +367,17 @@ p {
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 1.5rem;
     font-weight: 400;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
 }
 
 .hero-description {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.7);
-    max-width: 500px;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 480px;
     margin: 0 auto;
 }
 
@@ -411,7 +395,7 @@ section {
 .section-header h2 {
     color: #FFFFFF;
     margin-bottom: 1rem;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
 /* About Section */
@@ -441,7 +425,6 @@ section {
 
 .skill-category {
     background: transparent;
-    border: none;
     padding: 0;
     transition: all 0.3s ease;
 }
@@ -453,7 +436,7 @@ section {
 .skill-category h4 {
     margin-bottom: 1.5rem;
     color: #FFFFFF;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .skill-items {
@@ -466,17 +449,16 @@ section {
     background: transparent;
     color: rgba(255, 255, 255, 0.7);
     padding: 0.5rem 0;
-    border: none;
     font-size: 0.85rem;
     font-weight: 300;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     transition: all 0.3s ease;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
 }
 
 .skill-tag:hover {
     color: #FFFFFF;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 /* Work Section */
@@ -492,14 +474,13 @@ section {
 
 .project-card {
     background: transparent;
-    border: none;
     padding: 0;
     transition: all 0.3s ease;
     position: relative;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
 }
 
 .project-header {
@@ -512,18 +493,17 @@ section {
 .project-header h3 {
     color: #FFFFFF;
     font-size: 1.2rem;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .project-status {
     background: transparent;
     color: rgba(255, 255, 255, 0.6);
     padding: 0.5rem 0;
-    border: none;
     font-size: 0.8rem;
     font-weight: 300;
-    letter-spacing: 0.5px;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.3px;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
 }
 
 .project-info p {
@@ -542,17 +522,16 @@ section {
     background: transparent;
     color: rgba(255, 255, 255, 0.6);
     padding: 0.5rem 0;
-    border: none;
     font-size: 0.85rem;
     font-weight: 300;
-    letter-spacing: 0.5px;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.3px;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
     transition: all 0.3s ease;
 }
 
 .project-tech span:hover {
     color: #FFFFFF;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .project-metrics {
@@ -569,15 +548,15 @@ section {
     font-size: 1.5rem;
     font-weight: 500;
     color: #FFFFFF;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .metric-label {
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.6);
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     font-weight: 300;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
 }
 
 /* Contact Section */
@@ -598,7 +577,7 @@ section {
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: 3rem;
     line-height: 1.6;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
 }
 
 .contact-methods {
@@ -616,19 +595,17 @@ section {
     text-decoration: none;
     padding: 0.75rem 0;
     transition: all 0.3s ease;
-    border: none;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
 }
 
 .contact-method:hover {
     color: #FFFFFF;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 /* Footer */
 .footer {
     background: transparent;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 2rem 0;
 }
 
@@ -640,7 +617,7 @@ section {
 
 .footer p {
     color: rgba(255, 255, 255, 0.5);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 .system-status {
@@ -648,22 +625,22 @@ section {
     align-items: center;
     gap: 0.5rem;
     color: rgba(255, 255, 255, 0.7);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 400;
 }
 
 .status-indicator {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     background-color: #FFFFFF;
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    animation: status-pulse 2s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    animation: status-pulse 3s ease-in-out infinite;
 }
 
 @keyframes status-pulse {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
+    50% { opacity: 0.4; }
 }
 
 /* Responsive Design */
@@ -679,7 +656,7 @@ section {
     .nav-instructions {
         top: 10px;
         right: 10px;
-        font-size: 0.7rem;
+        font-size: 0.65rem;
     }
 
     .hamburger {
@@ -689,7 +666,7 @@ section {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 80px;
+        top: 70px;
         flex-direction: column;
         background-color: rgba(18, 25, 39, 0.95);
         backdrop-filter: blur(20px);
@@ -698,7 +675,6 @@ section {
         transition: 0.3s;
         padding: 2rem 0;
         gap: 1.5rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .nav-menu.active {
@@ -709,11 +685,6 @@ section {
         width: 200px;
         height: 200px;
         margin-bottom: 3rem;
-    }
-
-    .cube {
-        width: 100%;
-        height: 100%;
     }
 
     .cube-face {
@@ -767,21 +738,21 @@ section {
     }
 
     .cube-container {
-        width: 150px;
-        height: 150px;
+        width: 160px;
+        height: 160px;
     }
 
     .cube-face {
-        width: 150px;
-        height: 150px;
+        width: 160px;
+        height: 160px;
     }
 
-    .front { transform: rotateY(0deg) translateZ(75px); }
-    .back { transform: rotateY(180deg) translateZ(75px); }
-    .right { transform: rotateY(90deg) translateZ(75px); }
-    .left { transform: rotateY(-90deg) translateZ(75px); }
-    .top { transform: rotateX(90deg) translateZ(75px); }
-    .bottom { transform: rotateX(-90deg) translateZ(75px); }
+    .front { transform: rotateY(0deg) translateZ(80px); }
+    .back { transform: rotateY(180deg) translateZ(80px); }
+    .right { transform: rotateY(90deg) translateZ(80px); }
+    .left { transform: rotateY(-90deg) translateZ(80px); }
+    .top { transform: rotateX(90deg) translateZ(80px); }
+    .bottom { transform: rotateX(-90deg) translateZ(80px); }
 
     .project-metrics {
         flex-direction: column;
@@ -802,7 +773,7 @@ section {
 /* Focus styles for accessibility */
 .nav-link:focus,
 .contact-method:focus {
-    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline: 1px solid rgba(255, 255, 255, 0.4);
     outline-offset: 2px;
 }
 
@@ -813,7 +784,7 @@ section {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -821,21 +792,21 @@ section {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.3);
 }
 
 /* Selection styles */
 ::selection {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
     color: #FFFFFF;
 }
 
 ::-moz-selection {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
     color: #FFFFFF;
 }
