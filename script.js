@@ -221,4 +221,94 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-//
+// Add CSS animations for smooth entrance effects
+const additionalStyles = `
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes fadeInScale {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+`;
+
+// Inject additional styles
+const styleSheet = document.createElement('style');
+styleSheet.textContent = additionalStyles;
+document.head.appendChild(styleSheet);
+
+// Enhanced scroll-based cube rotation
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollProgress = scrolled / (documentHeight - windowHeight);
+    
+    // Subtle cube rotation based on scroll
+    const cube = document.querySelector('.cube');
+    if (cube) {
+        const rotationY = scrollProgress * 180;
+        cube.style.setProperty('--scroll-rotation', `${rotationY}deg`);
+    }
+});
+
+// Smooth page load animation
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.8s ease';
+    
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+});
+
+// Keyboard accessibility for cube interaction
+document.addEventListener('keydown', (e) => {
+    if (e.code === 'Space' && e.target === document.body) {
+        e.preventDefault();
+        const cube = document.querySelector('.cube');
+        if (cube) {
+            // Trigger click animation
+            cube.click();
+        }
+    }
+});
+
+// Console message for developers
+console.log(`
+✨ Cinematic Portfolio Experience
+📧 Contact: muntasirmkhan@hotmail.com
+🔗 GitHub: https://github.com/muntasiir
+💼 LinkedIn: https://linkedin.com/in/muntasir-khan
+
+Status: Online
+3D Cube: Active
+Animations: Enabled
+Design: Cinematic & Premium
+
+Built with modern web technologies
+Optimized for immersive experience
+`);
