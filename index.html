@@ -5,26 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muntasir Khan - Network Engineer</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation Instructions -->
     <div class="nav-instructions">
         <div class="instruction-line">
-            <span class="cmd-prompt">→</span>
-            <span class="cmd-text">Navigation Guide</span>
-        </div>
-        <div class="instruction-line">
-            <span class="cmd-output">Scroll • Click • Explore</span>
+            <span class="cmd-text">Navigate • Explore • Connect</span>
         </div>
     </div>
 
-    <!-- Navigation -->
+    <!-- Minimal Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <span>Muntasir Khan</span>
+                <span>MK</span>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -48,116 +43,47 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with 3D Cube -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Muntasir Khan</h1>
-                <p class="hero-subtitle">Network Engineer</p>
-                <p class="hero-description">Architecting digital infrastructures and logical networks with precision and innovation</p>
-                <div class="hero-buttons">
-                    <a href="#work" class="btn btn-primary">
-                        <span class="btn-text">View My Work</span>
-                        <span class="btn-glow"></span>
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <span class="btn-text">Get In Touch</span>
-                        <span class="btn-glow"></span>
-                    </a>
+        <div class="cube-container">
+            <div class="cube">
+                <div class="cube-face front">
+                    <div class="face-content">
+                        <div class="face-pattern"></div>
+                    </div>
+                </div>
+                <div class="cube-face back">
+                    <div class="face-content">
+                        <div class="face-pattern"></div>
+                    </div>
+                </div>
+                <div class="cube-face right">
+                    <div class="face-content">
+                        <div class="face-pattern"></div>
+                    </div>
+                </div>
+                <div class="cube-face left">
+                    <div class="face-content">
+                        <div class="face-pattern"></div>
+                    </div>
+                </div>
+                <div class="cube-face top">
+                    <div class="face-content">
+                        <div class="face-pattern"></div>
+                    </div>
+                </div>
+                <div class="cube-face bottom">
+                    <div class="face-content">
+                        <div class="face-pattern"></div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- 3D Network Rack -->
-        <div class="network-rack-container">
-            <div class="network-rack">
-                <!-- Rack Frame -->
-                <div class="rack-frame">
-                    <div class="rack-rail left-rail"></div>
-                    <div class="rack-rail right-rail"></div>
-                </div>
-                
-                <!-- Server Units -->
-                <div class="server-unit" style="--delay: 0s">
-                    <div class="server-face">
-                        <div class="server-lights">
-                            <div class="led power-led"></div>
-                            <div class="led activity-led"></div>
-                            <div class="led network-led"></div>
-                        </div>
-                        <div class="server-label">CORE-SW-01</div>
-                        <div class="server-ports">
-                            <div class="port"></div>
-                            <div class="port"></div>
-                            <div class="port active"></div>
-                            <div class="port active"></div>
-                        </div>
-                    </div>
-                    <div class="server-door">
-                        <div class="door-handle"></div>
-                    </div>
-                </div>
-
-                <div class="server-unit" style="--delay: 0.5s">
-                    <div class="server-face">
-                        <div class="server-lights">
-                            <div class="led power-led"></div>
-                            <div class="led activity-led"></div>
-                            <div class="led network-led"></div>
-                        </div>
-                        <div class="server-label">DIST-SW-02</div>
-                        <div class="server-ports">
-                            <div class="port active"></div>
-                            <div class="port"></div>
-                            <div class="port active"></div>
-                            <div class="port"></div>
-                        </div>
-                    </div>
-                    <div class="server-door">
-                        <div class="door-handle"></div>
-                    </div>
-                </div>
-
-                <div class="server-unit" style="--delay: 1s">
-                    <div class="server-face">
-                        <div class="server-lights">
-                            <div class="led power-led"></div>
-                            <div class="led activity-led"></div>
-                            <div class="led network-led"></div>
-                        </div>
-                        <div class="server-label">ACCESS-SW-03</div>
-                        <div class="server-ports">
-                            <div class="port"></div>
-                            <div class="port active"></div>
-                            <div class="port"></div>
-                            <div class="port active"></div>
-                        </div>
-                    </div>
-                    <div class="server-door">
-                        <div class="door-handle"></div>
-                    </div>
-                </div>
-
-                <div class="server-unit" style="--delay: 1.5s">
-                    <div class="server-face">
-                        <div class="server-lights">
-                            <div class="led power-led"></div>
-                            <div class="led activity-led"></div>
-                            <div class="led network-led"></div>
-                        </div>
-                        <div class="server-label">FW-CLUSTER-04</div>
-                        <div class="server-ports">
-                            <div class="port active"></div>
-                            <div class="port active"></div>
-                            <div class="port"></div>
-                            <div class="port"></div>
-                        </div>
-                    </div>
-                    <div class="server-door">
-                        <div class="door-handle"></div>
-                    </div>
-                </div>
-            </div>
+        
+        <div class="hero-content">
+            <h1>Muntasir Khan</h1>
+            <p class="hero-subtitle">Network Engineer</p>
+            <p class="hero-description">Architecting digital infrastructures with precision and innovation</p>
         </div>
     </section>
 
@@ -165,8 +91,7 @@
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
-                <h2>About Me</h2>
-                <div class="section-divider"></div>
+                <h2>About</h2>
             </div>
             <div class="about-content">
                 <div class="about-text">
@@ -210,8 +135,7 @@
     <section id="work" class="work">
         <div class="container">
             <div class="section-header">
-                <h2>My Work</h2>
-                <div class="section-divider"></div>
+                <h2>Work</h2>
             </div>
             <div class="projects-grid">
                 <article class="project-card">
@@ -300,60 +224,20 @@
         <div class="container">
             <div class="section-header">
                 <h2>Contact</h2>
-                <div class="section-divider"></div>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
                     <p class="contact-lead">Ready to architect your next network solution?</p>
                     <div class="contact-methods">
                         <a href="mailto:muntasirmkhan@hotmail.com" class="contact-method">
-                            <i class="fas fa-envelope"></i>
                             <span>muntasirmkhan@hotmail.com</span>
                         </a>
                         <a href="https://linkedin.com/in/muntasir-khan" class="contact-method">
-                            <i class="fab fa-linkedin"></i>
                             <span>LinkedIn Profile</span>
                         </a>
                         <a href="https://github.com/muntasiir" class="contact-method">
-                            <i class="fab fa-github"></i>
                             <span>GitHub Repository</span>
                         </a>
-                    </div>
-                </div>
-                <div class="terminal-window">
-                    <div class="terminal-header">
-                        <div class="terminal-buttons">
-                            <div class="terminal-button close"></div>
-                            <div class="terminal-button minimize"></div>
-                            <div class="terminal-button maximize"></div>
-                        </div>
-                        <div class="terminal-title">contact_form.sh</div>
-                    </div>
-                    <div class="terminal-body">
-                        <form class="contact-form">
-                            <div class="form-line">
-                                <span class="prompt">name@client:~$</span>
-                                <input type="text" id="name" name="name" placeholder="enter_name" required>
-                            </div>
-                            <div class="form-line">
-                                <span class="prompt">email@client:~$</span>
-                                <input type="email" id="email" name="email" placeholder="enter_email" required>
-                            </div>
-                            <div class="form-line">
-                                <span class="prompt">subject@client:~$</span>
-                                <input type="text" id="subject" name="subject" placeholder="enter_subject" required>
-                            </div>
-                            <div class="form-line">
-                                <span class="prompt">message@client:~$</span>
-                                <textarea id="message" name="message" placeholder="enter_message" rows="4" required></textarea>
-                            </div>
-                            <div class="form-line">
-                                <button type="submit" class="terminal-submit">
-                                    <span>./send_message.sh</span>
-                                    <span class="submit-cursor">|</span>
-                                </button>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
